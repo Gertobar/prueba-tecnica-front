@@ -1,0 +1,15 @@
+<div class="modal-footer">
+  <button type="button"
+          class="btn btn-rounded btn-primary"
+          (click)="agregarEvent()"
+          [disabled]="disabled">
+    {{textoGuardar}}
+  </button>
+
+  <button type="button"
+          class="btn btn-rounded btn-secondary"
+          (click)="closeEvent(false)"
+          data-bs-dismiss="modal">
+    {{textoCerrar}}
+  </button>
+</div>

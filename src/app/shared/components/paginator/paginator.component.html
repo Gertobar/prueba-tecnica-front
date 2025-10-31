@@ -1,0 +1,60 @@
+<ul *ngIf="paginas!.length > 0" class="pagination justify-content-center mb-3">
+
+  <!-- Botón Anterior -->
+  <li class="page-item" *ngIf="paginador.number > 0">
+    <a class="page-link"
+       [routerLink]="['/dashboard/' + nombre + '/page', paginador.number - 1]"
+       aria-label="Anterior">
+      <i class="fas fa-angle-left"></i>
+      <span class="sr-only">Anterior</span>
+    </a>
+  </li>
+
+  <!-- Botón Inicio -->
+  <li [ngClass]="paginador.first ? 'disabled page-item' : 'page-item'">
+    <a class="page-link"
+       [routerLink]="['/dashboard/' + nombre + '/page', 0]"
+       aria-label="Primera página">
+      Inicio
+    </a>
+  </li>
+
+  <!-- Números de página -->
+  <li *ngFor="let pagina of paginas"
+      class="page-item"
+      [ngClass]="pagina - 1 === paginador.number ? 'active' : ''">
+
+    <!-- Página actual -->
+    <span class="page-link" *ngIf="pagina - 1 === paginador.number">
+      {{ pagina }}
+    </span>
+
+    <!-- Otras páginas -->
+    <a class="page-link"
+       *ngIf="pagina - 1 !== paginador.number"
+       [routerLink]="['/dashboard/' + nombre + '/page', pagina - 1]"
+       [attr.aria-label]="'Ir a página ' + pagina">
+      {{ pagina }}
+    </a>
+  </li>
+
+  <!-- Botón Fin -->
+  <li [ngClass]="paginador.last ? 'disabled page-item' : 'page-item'">
+    <a class="page-link"
+       [routerLink]="['/dashboard/' + nombre + '/page', paginador.totalPages - 1]"
+       aria-label="Última página">
+      Fin
+    </a>
+  </li>
+
+  <!-- Botón Siguiente -->
+  <li class="page-item" *ngIf="paginador.number < paginador.totalPages - 1">
+    <a class="page-link"
+       [routerLink]="['/dashboard/' + nombre + '/page', paginador.number + 1]"
+       aria-label="Siguiente">
+      <i class="fas fa-angle-right"></i>
+      <span class="sr-only">Siguiente</span>
+    </a>
+  </li>
+
+</ul>

@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'animate.css/animate.min.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'admin-lte/dist/css/adminlte.min.css';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+.cdk-overlay-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;  /* Ocupa todo el ancho de la ventana */
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  z-index: 1050 !important;
+  overflow: hidden; /* Evita que el contenido desborde */
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

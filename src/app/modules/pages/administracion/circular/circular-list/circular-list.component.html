@@ -1,0 +1,76 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Cargar Circular</h3>
+  </div>
+  <div class="card-header py-1">
+    <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="text-left">
+        <div class="btn-group me-3">
+          <button class="btn btn-primary btn-sm" type="button" (click)="openModal()"
+            aria-label="Abrir modal">{{etiquetabtn}}</button>
+        </div>
+      </div>
+      <div class="input-group">
+        <form class="d-flex align-items-center">
+          <label for="searchValue" class="col-form-label-sm me-2" id="searchLabel">Buscar:</label>
+          <input class="form-control form-control-sm me-2" type="search" id="searchValue" name="searchValue"
+            placeholder="Buscar" aria-label="Buscar" aria-describedby="searchLabel">
+          <button class="btn btn-primary btn-sm" type="submit" aria-label="Realizar búsqueda">
+            <i class="fas fa-search"></i> <!-- Agrega un ícono de búsqueda -->
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Tabla para mostrar los resultados de los procesos -->
+  <div class="card-body p-2">
+    <table id="procesosContable" class="table table-bordered table-striped table-sm mb-0 text-sm">
+      <thead>
+        <!-- Cabeceras de la tabla pueden ir aquí si es necesario -->
+        <tr>
+          <th>Código </th>
+          <th>Título</th>
+          <th>Anexo</th>
+          <th>Fecha SEPS</th>
+          <th>Fecha Creacion</th>
+          <th>Fecha Modificacion</th>
+          <th>Ver</th>
+          <th class="text-nowrap text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Contenido de la tabla se agregará dinámicamente -->
+        <tr [routerLink]="['circularPage', circular.id]" *ngFor="let circular of circularList">
+          <td>{{ circular.id }}</td>
+          <td>{{ circular.titulo }}</td>
+          <td>{{ circular.anexo }}</td>
+          <td>{{ circular.fechaSeps | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ circular.fechaCreacion | date: 'dd/MM/yyyy' }}</td>
+          <td class="text-sm">{{ circular.fechaModificacion ? (circular.fechaModificacion | date: 'dd/MM/yyyy') : 'Sin
+            modificaciones' }}</td>
+          <td class="text-center" (click)="$event.stopPropagation()">
+            <button pTooltip="Ver detalles" tooltipPosition="top" class="btn btn-sm"
+              [routerLink]="['circularPage', circular.id]" aria-label="Ver circular">
+              <i class="fas fa-eye"></i>
+            </button>
+          </td>
+          <td class="text-center" (click)="$event.stopPropagation()">
+            <div class="dropdown" ngbDropdown>
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle-no-arrow" ngbDropdownToggle
+                (click)="$event.stopPropagation()">
+                <i class="fas fa-ellipsis-v"></i>
+              </button>
+              <div class="dropdown-menu" ngbDropdownMenu>
+                <button class="dropdown-item" (click)=" $event.stopPropagation()">
+                  <i class="fas fa-pencil-alt me-1"></i> Editar
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <paginator-nav *ngIf="paginador" [paginador]="paginador" [nombre]="nombre"></paginator-nav>
+</div>

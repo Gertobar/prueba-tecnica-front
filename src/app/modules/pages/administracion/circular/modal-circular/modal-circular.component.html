@@ -1,0 +1,84 @@
+<div role="dialog" aria-modal="true" aria-labelledby="modal-title" class="modal-content container-fluid p-3">
+  <app-modal-header-form [titulo]="titulo" (dismiss)="dismiss()"></app-modal-header-form>
+
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()">
+      <div class="row g-3">
+        <!-- File Upload Field -->
+        <div class="col-12">
+          <label for="fileInput" class="form-label">📄 Seleccionar archivo PDF</label>
+          <div class="drop-zone border rounded p-3 text-center"
+               (dragover)="onDragOver($event)"
+               (dragleave)="onDragLeave($event)"
+               (drop)="onDrop($event)"
+               [ngClass]="{'dragging': fileState.isDragging, 'border-primary': fileState.isDragging, 'has-file': fileState.selectedFile}"
+               style="cursor: pointer; min-height: 120px;">
+
+            <div class="d-flex flex-column justify-content-center h-100">
+              <p *ngIf="!fileState.selectedFile" class="text-center mb-2 small">
+                Arrastra y suelta aquí o haz clic para seleccionar un archivo
+              </p>
+              <p *ngIf="fileState.selectedFile" class="text-center mb-2 small text-truncate w-100">
+                📂 {{ fileState.selectedFile.name }}
+              </p>
+
+              <input type="file" class="form-control d-none" id="fileInput"
+                     (change)="onFileSelected($event)" accept=".pdf" #fileInput />
+
+              <button type="button" class="btn btn-outline-primary mt-2 mx-auto"
+                      style="width: auto; min-width: 160px;"
+                      (click)="fileInput.click()">
+                📁 Elegir Archivo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Date Field -->
+        <div class="col-12">
+          <label for="fechaInput" class="form-label">📅 Fecha SEPS</label>
+          <div class="input-group">
+            <button class="btn btn-outline-secondary"
+                    type="button"
+                    (click)="d.toggle()">
+              <i class="far fa-calendar-alt"></i>
+            </button>
+            <input class="form-control"
+                   placeholder="yyyy-mm-dd"
+                   name="fecha"
+                   [(ngModel)]="dateState.selectedDate"
+                   ngbDatepicker #d="ngbDatepicker"
+                   [displayMonths]="1"
+                   [navigation]="'select'"
+                   [minDate]="dateState.minDate"
+                   required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div *ngIf="messages.success" class="alert alert-success mt-3 p-2 small animate__animated animate__fadeIn">
+        <div class="d-flex align-items-center">
+          <i class="fas fa-check-circle me-2"></i>
+          <span>{{ messages.success }}</span>
+        </div>
+      </div>
+      <div *ngIf="messages.error" class="alert alert-danger mt-3 p-2 small animate__animated animate__fadeIn">
+        <div class="d-flex align-items-center">
+          <i class="fas fa-exclamation-circle me-2"></i>
+          <span>{{ messages.error }}</span>
+        </div>
+      </div>
+
+      <!-- Footer Buttons -->
+      <div class="modal-footer mt-3 p-0 border-0">
+        <button type="submit" class="btn btn-primary" [disabled]="!fileState.selectedFile || !dateState.selectedDate">
+          Guardar
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="closeDialog(false)">
+          Salir
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

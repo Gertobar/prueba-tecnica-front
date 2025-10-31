@@ -1,0 +1,123 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+
+        <div class="row no-print p-1 mb-1">
+          <div class="col-sm-2">
+            <button type="button" class="btn btn-primary w-100" (click)="goBack()">
+              <i class="fas fa-arrow-circle-left"></i> Atrás
+            </button>
+          </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="invoice p-3 mb-3">
+          <!-- title row -->
+          <div class="row">
+            <div class="col-12">
+              <h4>
+                <i class="fas fa-globe"></i> {{circular?.titulo}}
+                <small class="float-right">Fecha Seps: {{circular?.fechaSeps| date:'dd/MM/yyyy'}}</small>
+              </h4>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- info row -->
+          <div class="row invoice-info">
+            <div class="col-sm-6 invoice-col">
+              From
+              <address>
+                <strong>Admin, Inc.</strong><br>
+                795 Folsom Ave, Suite 600<br>
+                San Francisco, CA 94107<br>
+                Phone: (804) 123-5432<br>
+                Email: infoalmasaeedstudio.com
+              </address>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6 invoice-col">
+              To
+              <address>
+                <strong>John Doe</strong><br>
+                795 Folsom Ave, Suite 600<br>
+                San Francisco, CA 94107<br>
+                Phone: (555) 539-1037<br>
+                Email: john.doeexample.com
+              </address>
+            </div>
+          </div>
+          <!-- /.row -->
+
+          <!-- Table row -->
+          <!-- Tabla para mostrar los resultados de los procesos -->
+          <div class="card-body p-2">
+            <table id="procesosContable" class="table table-bordered table-striped table-sm mb-0 text-sm">
+              <thead>
+                <!-- Cabeceras de la tabla pueden ir aquí si es necesario -->
+                <tr>
+                  <th>Código </th>
+                  <th>Título</th>
+                  <th>Anexo</th>
+                  <th>Fecha SEPS</th>
+                  <th>Fecha Creacion</th>
+                  <th>Fecha Modificacion</th>
+                  <th>Ver</th>
+                  <th class="text-nowrap text-center">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Contenido de la tabla se agregará dinámicamente -->
+                <!-- <tr [routerLink]="['circularPage']" *ngFor="let circular of circularList">
+                  <td>{{ circular.id }}</td>
+                  <td>{{ circular.titulo }}</td>
+                  <td>{{ circular.anexo }}</td>
+                  <td>{{ circular.fechaSeps | date: 'dd/MM/yyyy' }}</td>
+                  <td>{{ circular.fechaCreacion | date: 'dd/MM/yyyy' }}</td>
+                  <td class="text-sm">{{ circular.fechaModificacion ? (circular.fechaModificacion | date: 'dd/MM/yyyy')
+                    : 'Sin modificaciones' }}</td>
+                  <td class="text-center" (click)="$event.stopPropagation()">
+                    <button pTooltip="Ver detalles" tooltipPosition="top" class="btn btn-sm"
+                      [routerLink]="['circularPage']" aria-label="Ver circular">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </td>
+                  <td class="text-center" (click)="$event.stopPropagation()">
+                    <div class="dropdown" ngbDropdown>
+                      <button class="btn btn-sm btn-outline-secondary dropdown-toggle-no-arrow" ngbDropdownToggle
+                        (click)="$event.stopPropagation()">
+                        <i class="fas fa-ellipsis-v"></i>
+                      </button>
+                      <div class="dropdown-menu" ngbDropdownMenu>
+                        <button class="dropdown-item" (click)=" $event.stopPropagation()">
+                          <i class="fas fa-pencil-alt me-1"></i> Editar
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+          <!-- /.row -->
+
+          <!-- this row will not appear when printing -->
+          <div class="row no-print">
+            <div class="col-12">
+              <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i
+                  class="fas fa-print"></i> Print</a>
+              <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
+                Payment
+              </button>
+              <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                <i class="fas fa-download"></i> Generate PDF
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- /.invoice -->
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->

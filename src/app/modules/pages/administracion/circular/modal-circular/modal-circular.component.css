@@ -1,0 +1,39 @@
+.drop-zone {
+  border: 2px dashed #007bff;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.drop-zone.dragging {
+  background-color: rgba(0, 123, 255, 0.2);
+}
+
+@media (max-width: 1200px) {
+  .drop-zone p {
+    font-size: 12px;  /* Ajuste de tamaño de texto para pantallas pequeñas */
+    line-height: 1.2;
+    word-wrap: break-word;  /* Asegura que el texto largo se ajuste dentro del contenedor */
+  }
+
+  .drop-zone button {
+    font-size: 14px;  /* Ajuste de tamaño de fuente para el botón en pantallas pequeñas */
+    padding: 5px 10px;  /* Ajuste de padding para que el botón se vea adecuado */
+    width: 100%;  /* El botón ocupará todo el ancho en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 800px) {
+  .drop-zone p {
+    font-size: 8px;  /* Ajuste de tamaño de texto para pantallas más pequeñas */
+  }
+
+  .drop-zone button {
+    font-size: 8px;  /* Ajuste de tamaño del botón para pantallas más pequeñas */
+    padding: 3px 6px;  /* Ajuste de padding para que el botón no se vea demasiado grande */
+  }
+}
