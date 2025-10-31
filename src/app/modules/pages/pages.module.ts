@@ -12,13 +12,11 @@ import { NgbDatepickerModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap'
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalCircularComponent } from './administracion/circular/modal-circular/modal-circular.component';
 import { CircularPageComponent } from './administracion/circular/create-coactiva/circular-page/circular-page.component';
-import { CircularListComponent } from './administracion/circular/circular-list/circular-list.component';
 import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
   declarations: [
-    CircularListComponent,
     CoactivaListComponent,
     CircularPageComponent,
     DashboardComponent,
@@ -38,7 +36,6 @@ import { BrowserModule } from '@angular/platform-browser';
     BrowserModule,
   ],
   exports: [
-    CircularListComponent,
     CoactivaListComponent,
     CircularPageComponent,
     ModalCircularComponent,

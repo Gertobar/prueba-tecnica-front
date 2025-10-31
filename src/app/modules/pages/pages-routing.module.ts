@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages.component';
 import { CoactivaListComponent } from './administracion/coactivas/coactiva-list/coactiva-list.component';
-import { CircularListComponent } from './administracion/circular/circular-list/circular-list.component';
 import { CircularPageComponent } from './administracion/circular/create-coactiva/circular-page/circular-page.component';
+import { SolicitudListComponent } from './administracion/solicitud/solicitud-list/solicitud-list.component';
 
 
 
@@ -29,18 +29,18 @@ const routes: Routes = [
       },
       {
         path: 'administracion/solicitud',
-        component: CircularListComponent,
+        component: SolicitudListComponent,
         data: {
           titulo: 'solicitud'
         }
       },
-      {
-        path: 'administracion/solicitud/solicitudPage/:id',
-        component: CircularPageComponent,
-        data: {
-          titulo: 'Solicitud Detalle'
-        }
-      }
+      // {
+      //   path: 'administracion/solicitud/solicitudPage/:id',
+      //   component: CircularPageComponent,
+      //   data: {
+      //     titulo: 'Solicitud Detalle'
+      //   }
+      // }
     ]
   }
 
