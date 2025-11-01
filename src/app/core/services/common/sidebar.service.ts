@@ -26,7 +26,7 @@ export class SidebarService {
   menu: any[] = [];
 
   constructor() {
-    this.menu = [...this.menuBase]; // Inicializa el menú
+    this.menu = [...this.menuBase];
   }
 
 }
